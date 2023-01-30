@@ -606,7 +606,7 @@ func (i *Invocation) generateUpsert(object DatabaseMapped) (statementLabel, quer
 	updateCols := updates.Columns()
 
 	// We add in all the autos columns to start
-	insertsWithAutos = cols.InsertColumns().ConcatWith(cols.Autos())
+	insertsWithAutos = cols.InsertColumns().ConcatWith(cols.NotReadOnly().Autos())
 	pks := insertsWithAutos.PrimaryKeys()
 
 	// But we exclude auto primary keys that are not set. Auto primary keys that ARE set must be included in the insert
