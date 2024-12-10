@@ -91,6 +91,9 @@ func TestParseUUIDv4Invalid(t *testing.T) {
 
 	_, err = Parse("4f2e28b7b8f94b9eba1d90c4452")
 	assert.NotNil(err, "should handle invalid length uuids")
+
+	_, err = Parse("8678c61e-5655-409c-a926-9fb23be9b466eafd")
+	assert.NotNil(err, "should handle invalid length uuids")
 }
 
 type marshalTest struct {

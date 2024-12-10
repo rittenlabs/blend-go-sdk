@@ -86,6 +86,9 @@ func ParseExisting(uuid *UUID, corpus string) error {
 
 		hex[hexIndex] = hexChar
 		if hexIndex == 1 {
+			if uuidIndex > len((*uuid))-1 {
+				return ex.New(ErrParseInvalidLength)
+			}
 			(*uuid)[uuidIndex] = hex[0]<<4 | hex[1]
 			uuidIndex++
 			hexIndex = 0
